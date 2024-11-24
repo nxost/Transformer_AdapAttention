@@ -23,13 +23,6 @@ class AdaptiveTransformerEncoderLayer(nn.Module):
             nn.Dropout(dropout),
             nn.Linear(dim_feedforward, d_model),
         )
-        self.adaptive_attention = AdaptiveAttention(d_model, nhead, dropout)
-        self.feed_forward = nn.Sequential(
-            nn.Linear(d_model, dim_feedforward),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-            nn.Linear(dim_feedforward, d_model),
-        )
         self.norm1 = nn.LayerNorm(d_model)
         self.norm2 = nn.LayerNorm(d_model)
         self.dropout = nn.Dropout(dropout)
